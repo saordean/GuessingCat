@@ -8,13 +8,25 @@
 
 #import "AppDelegate.h"
 
+
 @implementation AppDelegate
+
+@synthesize mainView;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    // init the view controller
+    mainView = [[GuessingCatViewController alloc] init];
+    
+    // set as root view
+    self.window.rootViewController = mainView;
+    
+       
     [self.window makeKeyAndVisible];
     return YES;
 }

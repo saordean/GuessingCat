@@ -16,6 +16,8 @@
 		F2BDFCD71703B218007CB02F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCD61703B218007CB02F /* Default.png */; };
 		F2BDFCD91703B218007CB02F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCD81703B218007CB02F /* Default@2x.png */; };
 		F2BDFCDB1703B218007CB02F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */; };
+		F2BDFCE51703B288007CB02F /* GuessingCatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDFCE31703B288007CB02F /* GuessingCatViewController.m */; };
+		F2BDFCE61703B288007CB02F /* GuessingCatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCE41703B288007CB02F /* GuessingCatViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,9 @@
 		F2BDFCD61703B218007CB02F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F2BDFCD81703B218007CB02F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F2BDFCE21703B288007CB02F /* GuessingCatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessingCatViewController.h; sourceTree = "<group>"; };
+		F2BDFCE31703B288007CB02F /* GuessingCatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessingCatViewController.m; sourceTree = "<group>"; };
+		F2BDFCE41703B288007CB02F /* GuessingCatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuessingCatViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +83,13 @@
 		F2BDFCCA1703B218007CB02F /* GuessingCat */ = {
 			isa = PBXGroup;
 			children = (
+				F2BDFCE11703B259007CB02F /* images */,
 				F2BDFCD31703B218007CB02F /* AppDelegate.h */,
 				F2BDFCD41703B218007CB02F /* AppDelegate.m */,
 				F2BDFCCB1703B218007CB02F /* Supporting Files */,
+				F2BDFCE21703B288007CB02F /* GuessingCatViewController.h */,
+				F2BDFCE31703B288007CB02F /* GuessingCatViewController.m */,
+				F2BDFCE41703B288007CB02F /* GuessingCatViewController.xib */,
 			);
 			path = GuessingCat;
 			sourceTree = "<group>";
@@ -97,6 +106,13 @@
 				F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2BDFCE11703B259007CB02F /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +170,7 @@
 				F2BDFCD71703B218007CB02F /* Default.png in Resources */,
 				F2BDFCD91703B218007CB02F /* Default@2x.png in Resources */,
 				F2BDFCDB1703B218007CB02F /* Default-568h@2x.png in Resources */,
+				F2BDFCE61703B288007CB02F /* GuessingCatViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +183,7 @@
 			files = (
 				F2BDFCD11703B218007CB02F /* main.m in Sources */,
 				F2BDFCD51703B218007CB02F /* AppDelegate.m in Sources */,
+				F2BDFCE51703B288007CB02F /* GuessingCatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
