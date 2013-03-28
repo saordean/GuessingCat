@@ -13,11 +13,12 @@
 		F2BDFCCF1703B218007CB02F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCCD1703B218007CB02F /* InfoPlist.strings */; };
 		F2BDFCD11703B218007CB02F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDFCD01703B218007CB02F /* main.m */; };
 		F2BDFCD51703B218007CB02F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDFCD41703B218007CB02F /* AppDelegate.m */; };
-		F2BDFCD71703B218007CB02F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCD61703B218007CB02F /* Default.png */; };
 		F2BDFCD91703B218007CB02F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCD81703B218007CB02F /* Default@2x.png */; };
 		F2BDFCDB1703B218007CB02F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */; };
 		F2BDFCE51703B288007CB02F /* GuessingCatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDFCE31703B288007CB02F /* GuessingCatViewController.m */; };
 		F2BDFCE61703B288007CB02F /* GuessingCatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCE41703B288007CB02F /* GuessingCatViewController.xib */; };
+		F2E946981704C45C008D0ED7 /* Mocha.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E946971704C45C008D0ED7 /* Mocha.png */; };
+		F2E9469C1704D0C7008D0ED7 /* fiveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E9469B1704D0C7008D0ED7 /* fiveButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,12 +32,14 @@
 		F2BDFCD21703B218007CB02F /* GuessingCat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GuessingCat-Prefix.pch"; sourceTree = "<group>"; };
 		F2BDFCD31703B218007CB02F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2BDFCD41703B218007CB02F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F2BDFCD61703B218007CB02F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F2BDFCD81703B218007CB02F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F2BDFCE21703B288007CB02F /* GuessingCatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessingCatViewController.h; sourceTree = "<group>"; };
 		F2BDFCE31703B288007CB02F /* GuessingCatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessingCatViewController.m; sourceTree = "<group>"; };
 		F2BDFCE41703B288007CB02F /* GuessingCatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuessingCatViewController.xib; sourceTree = "<group>"; };
+		F2E946971704C45C008D0ED7 /* Mocha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mocha.png; sourceTree = SOURCE_ROOT; };
+		F2E946991704C495008D0ED7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		F2E9469B1704D0C7008D0ED7 /* fiveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fiveButton.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +86,7 @@
 		F2BDFCCA1703B218007CB02F /* GuessingCat */ = {
 			isa = PBXGroup;
 			children = (
-				F2BDFCE11703B259007CB02F /* images */,
+				F2E946961704C326008D0ED7 /* images */,
 				F2BDFCD31703B218007CB02F /* AppDelegate.h */,
 				F2BDFCD41703B218007CB02F /* AppDelegate.m */,
 				F2BDFCCB1703B218007CB02F /* Supporting Files */,
@@ -97,20 +100,22 @@
 		F2BDFCCB1703B218007CB02F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2E9469B1704D0C7008D0ED7 /* fiveButton.png */,
+				F2E946991704C495008D0ED7 /* Default.png */,
 				F2BDFCCC1703B218007CB02F /* GuessingCat-Info.plist */,
 				F2BDFCCD1703B218007CB02F /* InfoPlist.strings */,
 				F2BDFCD01703B218007CB02F /* main.m */,
 				F2BDFCD21703B218007CB02F /* GuessingCat-Prefix.pch */,
-				F2BDFCD61703B218007CB02F /* Default.png */,
 				F2BDFCD81703B218007CB02F /* Default@2x.png */,
 				F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F2BDFCE11703B259007CB02F /* images */ = {
+		F2E946961704C326008D0ED7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F2E946971704C45C008D0ED7 /* Mocha.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -167,10 +172,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2BDFCCF1703B218007CB02F /* InfoPlist.strings in Resources */,
-				F2BDFCD71703B218007CB02F /* Default.png in Resources */,
 				F2BDFCD91703B218007CB02F /* Default@2x.png in Resources */,
 				F2BDFCDB1703B218007CB02F /* Default-568h@2x.png in Resources */,
 				F2BDFCE61703B288007CB02F /* GuessingCatViewController.xib in Resources */,
+				F2E946981704C45C008D0ED7 /* Mocha.png in Resources */,
+				F2E9469C1704D0C7008D0ED7 /* fiveButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +271,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GuessingCat/GuessingCat-Prefix.pch";
 				INFOPLIST_FILE = "GuessingCat/GuessingCat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -276,7 +284,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GuessingCat/GuessingCat-Prefix.pch";
 				INFOPLIST_FILE = "GuessingCat/GuessingCat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -300,6 +310,7 @@
 				F2BDFCE01703B218007CB02F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
