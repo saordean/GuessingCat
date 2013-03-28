@@ -21,6 +21,7 @@
 -(IBAction) nineButton:(id) sender;
 -(IBAction) playAgainButton:(id) sender;
 
+-(IBAction) anyButtonClicked:(id) sender;
 @end
 
 // Application wide variables
@@ -28,7 +29,9 @@
 // Number selected by the player
 NSInteger numberChosen;
 
-// Number of guesses per game (restricted to 4 number key presses per game)
+
+// The number of guesses per game is restricted to 4 number key presses per game
+// The value below is the value to be used for a given key press and is set by the randowm number generator
 NSInteger numberToBeGuessed;
 
 // Boolean indicator of whether the Play Again button was pressed
