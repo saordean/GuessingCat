@@ -37,8 +37,10 @@ NSInteger correctNumber = 0;
 // Numnber of wins
 NSInteger numberOfWins;
 
-// Boolean indicator of whether the Play Again button was pressed
-BOOL playAgain = YES;
+
+// Name for wich png file to use when displaying wins
+NSString *pngName;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,10 +57,11 @@ BOOL playAgain = YES;
 {
     GuessingCatViewController* view;
     view = [GuessingCatViewController alloc];
-    
-    playAgain = YES;
+
     numberOfAttempts = 0;
     numberOfLosses = 0;
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"overLossLimit"];
+    gameTitleLabel.text = @"Guessing Cat Game";
     
     [self presentViewController:view
        animated:YES completion:Nil];
@@ -113,7 +116,16 @@ BOOL playAgain = YES;
                 ++numberOfWins;
                 // Put Happy cat on screen
                 gameTitleLabel.text = @"You won Guessing cat Game";
-                [UIImage imageNamed:@"mocho.png"];
+            if (numberOfWins == 1){
+                pngName = @"oneCat.png";
+            } else if (numberOfWins == 2){
+                pngName = @"twoCats.png";
+            } else if (numberOfWins == 3) {
+                pngName = @"threeCats.png";
+            }
+            UIImage *kitty = [UIImage imageNamed:pngName];
+            [_kittyImageView setImage:kitty];
+            
         } else {
                 // Hide the button:
                 // Buttons can be hidden and unhidden programmatically by adding "[buttonName setHidden: TRUE];" without
@@ -121,13 +133,13 @@ BOOL playAgain = YES;
                 // Use "TRUE" to hide the button or "FALSE" to unhide it.
                 UIButton *tmp = (UIButton *)sender;
                 tmp.hidden = YES;
-                [UIImage imageNamed:@"mocha.png"];        }
+                [UIImage imageNamed:@"mocha.png"];
+        }
     }
     if (numberOfAttempts == 4 && numberOfLosses == 4) {
         // Lock the game
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"overLossLimit"];
     }
-    
 }
 
 // Random number generator method
@@ -147,20 +159,18 @@ BOOL playAgain = YES;
 
     //---    Initialize a new game    ---
     
-                  // Initialize the variables used to track number of attemspt and number of games
+    // Initialize the variables used to track number of attemspt and number of games
     numberOfAttempts = 0;
     
-                  // Initialize the "Play Again" value
-    playAgain = NO;
     
     
-                 // Check the global stored value for the losslimit flag, lock the user out if it is set
-    UIImage *kitty = [UIImage imageNamed:@"mocha.png"];
-    [_kittyImageView setImage:kitty];
+    // Check the global stored value for the losslimit flag, lock the user out if it is set
+    //UIImage *kitty = [UIImage imageNamed:@"threeCats.png"];
+    //[_kittyImageView setImage:kitty];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"overLossLimit"]){
         // Display
-        gameTitleLabel.text = @"Guessing cat Game - DISABLED";
+        gameTitleLabel.text = @"Guessing Cat Game - DISABLED";
     }
                    
 }
