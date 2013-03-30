@@ -16,11 +16,14 @@
 
 @implementation GuessingCatViewController
 
+
 @synthesize gameTitleLabel;
 
 
-
 // Application wide variables
+
+// Array to hold the IDs of buttons that have been hidden
+NSMutableArray *hiddenButtonArray;
 
 // Number selected by the player
 NSInteger numberChosen;
@@ -37,10 +40,17 @@ NSInteger correctNumber = 0;
 // Numnber of wins
 NSInteger numberOfWins;
 
+// Global win count
+Boolean globalWinCount;
 
-// Name for wich png file to use when displaying wins
-NSString *pngName;
+// Boolean value for whether the game is locked or not
+Boolean gameLocked;
 
+// Name for an array holding png file names to be used when displaying wins
+NSMutableArray *pngNameArray;
+
+// Index value for the array holding png file names
+NSInteger imageIndex;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,88 +70,115 @@ NSString *pngName;
 
     numberOfAttempts = 0;
     numberOfLosses = 0;
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"overLossLimit"];
-    gameTitleLabel.text = @"Guessing Cat Game";
+    // Generate a new number to be guessed
+    correctNumber = [GuessingCatViewController randomInRangeLo: 1 toHi: 9];
+ 
+    // Reset the game display
+    [self presentViewController:view animated:YES completion:Nil];
     
-    [self presentViewController:view
-       animated:YES completion:Nil];
+    if (!gameLocked){
+        gameTitleLabel.text = @"Guessing Cat Game";
+    } else {
+        gameTitleLabel.text = @"Too many losses Guessing Cat Game LOCKED";
+    }
 }
 
 
-// Using interface builder to create the buttons, simply point them at the same IBAction in the relevant class.
-//You can then differentiate between the buttons within the IBAction method by reading the text from the button
 - (IBAction)anyButtonClicked:(id)sender {
     GuessingCatViewController* view;
     view = [GuessingCatViewController alloc];
     
+    // Reset the gameTitleLabel label to hide the notification of any previous win
+    gameTitleLabel.text = @"Guessing Cat Game";
+    
     // Increment the number of attempts counter
     ++numberOfAttempts;
-    NSLog(@"Button pressed: %@", [sender currentTitle]);
-    if ([[sender currentTitle] isEqualToString:@"1"]) {
-        // one
-        numberChosen = 1;
-    } else if ([[sender currentTitle] isEqualToString:@"2"]){
-        // two
-        numberChosen = 2;
-    } else if ([[sender currentTitle] isEqualToString:@"3"]){
-        // three
-        numberChosen = 3;
-    } else if ([[sender currentTitle] isEqualToString:@"4"]){
-        // four
-        numberChosen = 4;
-    } else if ([[sender currentTitle] isEqualToString:@"5"]){
-        // five
-        numberChosen = 5;
-    } else if ([[sender currentTitle] isEqualToString:@"6"]){
-        // six
-        numberChosen = 6;
-    } else if ([[sender currentTitle] isEqualToString:@"7"]){
-        // seven
-        numberChosen = 7;
-    } else if([[sender currentTitle] isEqualToString:@"8"]){
-        // eight
-        numberChosen = 8;
-    } else if ([[sender currentTitle] isEqualToString:@"9"]){
-        //nine
-        numberChosen = 9;
-    }
     
-    correctNumber = [GuessingCatViewController randomInRangeLo: 1 toHi: 9];
+    NSLog(@"___________%d______________", numberOfAttempts);
     NSLog(@"Correct number: %d", correctNumber);
-    // If the number chosen is not equal to the random number to be guessed for this play
-    // take all actions associated with a failing attempt:
+    numberChosen = [[sender currentTitle] intValue];
+    NSLog(@"Number chosen: %d", numberChosen);
     NSLog(@"Number of attempts: %d", numberOfAttempts);
-    if (numberOfAttempts < 5 && numberOfLosses < 4){
+    NSLog(@"Number of wins: %d", numberOfWins);
+    NSLog(@"___________%d______________", numberOfAttempts);
+          
+    // If the game isn't locked, number of guesses < 4 and number of losses < 4, proceed
+    if    (!gameLocked
+        && numberOfAttempts < 5
+        && numberOfLosses < 4)
+    {
+        // The number chosen is equal to the number generated take action for a win attempt
         if (numberChosen == correctNumber) {
-                ++numberOfWins;
-                // Put Happy cat on screen
-                gameTitleLabel.text = @"You won Guessing cat Game";
-            if (numberOfWins == 1){
-                pngName = @"oneCat.png";
-            } else if (numberOfWins == 2){
-                pngName = @"twoCats.png";
-            } else if (numberOfWins == 3) {
-                pngName = @"threeCats.png";
+            
+            // Increment the number of wins value
+            ++numberOfWins;
+            if (numberOfWins == 3){
+                gameTitleLabel.text = @"GAME OVER! Congratulations!";
+            } else {
+                // save the number of wins globally
+               [[NSUserDefaults standardUserDefaults] setInteger:numberOfWins forKey:@"integerKey"];
             }
-            UIImage *kitty = [UIImage imageNamed:pngName];
+            
+            //  Show an image of how many wins have happened
+            imageIndex = numberOfWins -1;
+            UIImage *kitty = [UIImage imageNamed:[pngNameArray objectAtIndex:2]];
             [_kittyImageView setImage:kitty];
             
-        } else {
-                // Hide the button:
-                // Buttons can be hidden and unhidden programmatically by adding "[buttonName setHidden: TRUE];" without
-                // quotation marks to your code. Replace "buttonName" with the title of your button.
-                // Use "TRUE" to hide the button or "FALSE" to unhide it.
-                UIButton *tmp = (UIButton *)sender;
-                tmp.hidden = YES;
-                [UIImage imageNamed:@"mocha.png"];
+            // Show previously hidden buttons
+            [ GuessingCatViewController showHiddenButtons];
+            
+            // Reset the number of attempts after a win
+            numberOfAttempts = 0;
+            
+            // Reset the number of losses after a win
+            numberOfLosses = 0;
+            
+            
+            gameTitleLabel.text = @"You have won the Guessing Cat Game!";
+            
+                    } else {
+        // The number chosen is not equal to the number generated, take action for failed attempt
+            
+            // Hide the last button pressed
+            UIButton *tmp = (UIButton *)sender;
+            tmp.hidden = YES;
+            
+            // Add the ID of the button just hidden to the hidden button array
+            [hiddenButtonArray addObject:(UIButton *) sender];
+            
+            //[UIImage imageNamed:@"mocha.png"];
+            
+            // If the number of attempts is 4, there have been 4 failed attempts, record a loss
+            if (numberOfAttempts == 4) {
+                ++numberOfLosses;
+                // Reset the number of attempts
+                numberOfAttempts = 0;
+                // [self presentViewController:view animated:YES completion:Nil];
+                gameTitleLabel.text = @"You have lost the Guessing Cat Game!";
+                [GuessingCatViewController showHiddenButtons];
+            }
         }
-    }
-    if (numberOfAttempts == 4 && numberOfLosses == 4) {
-        // Lock the game
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"overLossLimit"];
+        
+        if (numberOfLosses == 4) {
+            // Lock the game
+            //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"overLossLimit"];
+            gameTitleLabel.text = @"Too many losses Guessing Cat Game LOCKED";
+        }
     }
 }
 
+// Method to show buttons that previously been hidden (UIButton IDs stored in hiddenButtonArray
++ (void) showHiddenButtons
+{
+   // Reset the hidden buttons after a win
+   for (int i=0; i < [hiddenButtonArray count]; i++) {
+       UIButton *tmp = [hiddenButtonArray objectAtIndex:i];
+       // unhide the button
+       tmp.hidden = NO;
+   }
+}
+ 
+ 
 // Random number generator method
 + (u_int32_t)randomInRangeLo:(u_int32_t)loBound toHi:(u_int32_t)hiBound
 {
@@ -157,25 +194,34 @@ NSString *pngName;
     //[self.fullSizeImage setBackgroundImage:[UIImage imageNamed:@"button.png"] forState:UIControlStateNormal];
     //[self.fullSizeImage setBackgroundImage:[UIImage imageNamed:@"buttonHighlighted.png"] forState:UIControlStateHighlighted];
 
-    //---    Initialize a new game    ---
+    //---    Initialize the after a program restart game    ---
     
-    // Initialize the variables used to track number of attemspt and number of games
+    // Set the initial value to be guessed
+    
+    // Initialize the variables used to track number of attempts and number of games
     numberOfAttempts = 0;
     
+    // Get the global across restart stored numberOfWins value
+    numberOfWins = [[NSUserDefaults standardUserDefaults] integerForKey:@"integerKey"];
     
+    // Initialzie the array holding the pointers to names of win count image files
+    pngNameArray = [[NSMutableArray alloc] init];
+    [pngNameArray addObject:@"oneCat.png"];
+    [pngNameArray addObject:@"twoCats.png"];
+    [pngNameArray addObject:@"threeCats.png"];
     
-    // Check the global stored value for the losslimit flag, lock the user out if it is set
-    //UIImage *kitty = [UIImage imageNamed:@"threeCats.png"];
-    //[_kittyImageView setImage:kitty];
+    // Initialize the hidden button array
+    hiddenButtonArray = [[NSMutableArray alloc] init];
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"overLossLimit"]){
-        // Display
+    // Check the global stored value for losslimit flag, lock the user out if it is set
+    gameLocked = [[NSUserDefaults standardUserDefaults] boolForKey:@"overLossLimit"];
+    if (gameLocked){
+        // Display "Guessing Cat Game - DISABLED" message
         gameTitleLabel.text = @"Guessing Cat Game - DISABLED";
     }
-                   
 }
 
-         
+
 - (void)didReceiveMemoryWarning
 {
 
