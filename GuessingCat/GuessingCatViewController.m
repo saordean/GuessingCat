@@ -22,6 +22,15 @@
 
 // Application wide variables
 
+// Game end image
+UIImageView *gameEnd;
+
+// Game end frame = currentBrick.frame
+//?????? *gameEndframe ;
+
+// Create a frame timer
+NSTimer *frameTimer;
+
 // Array to hold the IDs of buttons that have been hidden
 NSMutableArray *hiddenButtonArray;
 
@@ -143,7 +152,11 @@ NSInteger imageIndex;
             // Reset the number of losses after a win
             numberOfLosses = 0;
             
-            
+            //[self.view addSubview:gameEnd];
+            //sleep(5);
+            //frameTimer = [NSTimer timerWithTimeInterval:10 target:self //selector:@selector(changeImage) userInfo:nil repeats:true];
+            //[self.view Subview:gameEnd];
+    
             gameTitleLabel.text = @"You have correctly guessed the number and won a play!";
             
         } else {
@@ -206,11 +219,19 @@ NSInteger imageIndex;
 
     //---    Initialize the after a program restart game    ---
     
+    // Set up end of game image
+    
+    gameEnd = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Mocha.png"]];
+//    gameEndframe = currentBrick.frame;
+    
     // Set the initial value to be guessed
     correctNumber = [GuessingCatViewController randomInRangeLo: 1 toHi: 9];
     
     // Initialize the variable used to track number of attempts
     numberOfAttempts = 0;
+    
+    //numberOfWins = 0;
+    //[[NSUserDefaults standardUserDefaults] setInteger:numberOfWins forKey:@"integerKey"];;
     
     // Get the global across restart stored numberOfWins value
     numberOfWins = [[NSUserDefaults standardUserDefaults] integerForKey:@"integerKey"];
@@ -225,10 +246,12 @@ NSInteger imageIndex;
     hiddenButtonArray = [[NSMutableArray alloc] init];
     
     // Check the global stored value for losslimit flag, lock the user out if it is set
-    gameLocked = [[NSUserDefaults standardUserDefaults] boolForKey:@"overLossLimit"];
+        gameLocked = [[NSUserDefaults standardUserDefaults] boolForKey:@"overLossLimit"];
     if (gameLocked){
         // Display "Guessing Cat Game - DISABLED" message
         gameTitleLabel.text = @"Guessing Cat Game - DISABLED";
+        //numberOfWins = 0;
+        //[[NSUserDefaults standardUserDefaults] setInteger:numberOfWins forKey:@"integerKey"];;
     }
 }
 
