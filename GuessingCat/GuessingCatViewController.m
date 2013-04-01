@@ -70,22 +70,25 @@ NSInteger imageIndex;
 
     numberOfAttempts = 0;
     numberOfLosses = 0;
+    
     // Generate a new number to be guessed
     correctNumber = [GuessingCatViewController randomInRangeLo: 1 toHi: 9];
- 
+    
     // Reset the game display
     [self presentViewController:view animated:YES completion:Nil];
     
     if (!gameLocked){
         gameTitleLabel.text = @"Guessing Cat Game";
     } else {
-        gameTitleLabel.text = @"Too many losses Guessing Cat Game LOCKED";
+        gameTitleLabel.text = @"You have had four losses, the game is now LOCKED";
     }
 }
 
 
 - (IBAction)anyButtonClicked:(id)sender {
     GuessingCatViewController* view;
+    
+    
     view = [GuessingCatViewController alloc];
     
     // Reset the gameTitleLabel label to hide the notification of any previous win
@@ -104,24 +107,31 @@ NSInteger imageIndex;
           
     // If the game isn't locked, number of guesses < 4 and number of losses < 4, proceed
     if    (!gameLocked
-        && numberOfAttempts < 5
-        && numberOfLosses < 4)
+           && numberOfAttempts < 5
+           && numberOfLosses   < 4)
     {
         // The number chosen is equal to the number generated take action for a win attempt
         if (numberChosen == correctNumber) {
+            // Get the current value of the number of wins
+            numberOfWins = [[NSUserDefaults standardUserDefaults] integerForKey:@"integerKey"];
             
             // Increment the number of wins value
-            ++numberOfWins;
+            if (numberOfWins >=3) {
+                numberOfWins = 3;
+            } else {
+                ++numberOfWins;
+            }
+            
+            // Increment the global valure
+            [[NSUserDefaults standardUserDefaults] setInteger:numberOfWins forKey:@"integerKey"];;
+            
             if (numberOfWins == 3){
                 gameTitleLabel.text = @"GAME OVER! Congratulations!";
-            } else {
-                // save the number of wins globally
-               [[NSUserDefaults standardUserDefaults] setInteger:numberOfWins forKey:@"integerKey"];
             }
             
             //  Show an image of how many wins have happened
-            imageIndex = numberOfWins -1;
-            UIImage *kitty = [UIImage imageNamed:[pngNameArray objectAtIndex:2]];
+            imageIndex = numberOfWins-1;
+            UIImage *kitty = [UIImage imageNamed:[pngNameArray objectAtIndex:imageIndex]];
             [_kittyImageView setImage:kitty];
             
             // Show previously hidden buttons
@@ -134,11 +144,11 @@ NSInteger imageIndex;
             numberOfLosses = 0;
             
             
-            gameTitleLabel.text = @"You have won the Guessing Cat Game!";
+            gameTitleLabel.text = @"You have correctly guessed the number and won a play!";
             
-                    } else {
-        // The number chosen is not equal to the number generated, take action for failed attempt
-            
+        } else {
+            // The number chosen is not equal to the number generated, take action for failed attempt
+    
             // Hide the last button pressed
             UIButton *tmp = (UIButton *)sender;
             tmp.hidden = YES;
@@ -154,7 +164,7 @@ NSInteger imageIndex;
                 // Reset the number of attempts
                 numberOfAttempts = 0;
                 // [self presentViewController:view animated:YES completion:Nil];
-                gameTitleLabel.text = @"You have lost the Guessing Cat Game!";
+                gameTitleLabel.text = @"You have lost a play of the game.";
                 [GuessingCatViewController showHiddenButtons];
             }
         }
@@ -162,7 +172,7 @@ NSInteger imageIndex;
         if (numberOfLosses == 4) {
             // Lock the game
             //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"overLossLimit"];
-            gameTitleLabel.text = @"Too many losses Guessing Cat Game LOCKED";
+            gameTitleLabel.text = @"You had too many losses and the game is LOCKED";
         }
     }
 }
@@ -197,8 +207,9 @@ NSInteger imageIndex;
     //---    Initialize the after a program restart game    ---
     
     // Set the initial value to be guessed
+    correctNumber = [GuessingCatViewController randomInRangeLo: 1 toHi: 9];
     
-    // Initialize the variables used to track number of attempts and number of games
+    // Initialize the variable used to track number of attempts
     numberOfAttempts = 0;
     
     // Get the global across restart stored numberOfWins value
