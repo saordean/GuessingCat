@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2204742170BBB19003EADF7 /* Play.m in Sources */ = {isa = PBXBuildFile; fileRef = F2204740170BBB19003EADF7 /* Play.m */; };
 		F2BDFCC51703B218007CB02F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDFCC41703B218007CB02F /* UIKit.framework */; };
 		F2BDFCC71703B218007CB02F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDFCC61703B218007CB02F /* Foundation.framework */; };
 		F2BDFCC91703B218007CB02F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDFCC81703B218007CB02F /* CoreGraphics.framework */; };
@@ -21,11 +22,14 @@
 		F2BF4B5017050E1A000B12B2 /* oneCat.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BF4B4F17050E1A000B12B2 /* oneCat.png */; };
 		F2BF4B5217050F9E000B12B2 /* threeCats.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BF4B5117050F9E000B12B2 /* threeCats.png */; };
 		F2BF4B5317051090000B12B2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E946991704C495008D0ED7 /* Default.png */; };
+		F2C8862B170DEC5800E7D625 /* Pick.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C8862A170DEC5800E7D625 /* Pick.m */; };
 		F2E946981704C45C008D0ED7 /* Mocha.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E946971704C45C008D0ED7 /* Mocha.png */; };
 		F2E9469C1704D0C7008D0ED7 /* fiveButton.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E9469B1704D0C7008D0ED7 /* fiveButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F220473F170BBB19003EADF7 /* Play.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play.h; sourceTree = "<group>"; };
+		F2204740170BBB19003EADF7 /* Play.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Play.m; sourceTree = "<group>"; };
 		F2BDFCC11703B218007CB02F /* GuessingCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessingCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BDFCC41703B218007CB02F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2BDFCC61703B218007CB02F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +48,8 @@
 		F2BF4B4D17050E10000B12B2 /* twoCats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twoCats.png; sourceTree = SOURCE_ROOT; };
 		F2BF4B4F17050E1A000B12B2 /* oneCat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oneCat.png; sourceTree = SOURCE_ROOT; };
 		F2BF4B5117050F9E000B12B2 /* threeCats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = threeCats.png; sourceTree = SOURCE_ROOT; };
+		F2C88629170DEC5800E7D625 /* Pick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pick.h; sourceTree = "<group>"; };
+		F2C8862A170DEC5800E7D625 /* Pick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pick.m; sourceTree = "<group>"; };
 		F2E946971704C45C008D0ED7 /* Mocha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mocha.png; sourceTree = SOURCE_ROOT; };
 		F2E946991704C495008D0ED7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		F2E9469B1704D0C7008D0ED7 /* fiveButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fiveButton.png; sourceTree = SOURCE_ROOT; };
@@ -63,6 +69,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F220473E170BB936003EADF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F220473F170BBB19003EADF7 /* Play.h */,
+				F2204740170BBB19003EADF7 /* Play.m */,
+				F2C88629170DEC5800E7D625 /* Pick.h */,
+				F2C8862A170DEC5800E7D625 /* Pick.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F2BDFCB81703B217007CB02F = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +110,7 @@
 		F2BDFCCA1703B218007CB02F /* GuessingCat */ = {
 			isa = PBXGroup;
 			children = (
+				F220473E170BB936003EADF7 /* Model */,
 				F2BDFCD31703B218007CB02F /* AppDelegate.h */,
 				F2BDFCD41703B218007CB02F /* AppDelegate.m */,
 				F2BDFCCB1703B218007CB02F /* Supporting Files */,
@@ -196,6 +214,8 @@
 				F2BDFCD11703B218007CB02F /* main.m in Sources */,
 				F2BDFCD51703B218007CB02F /* AppDelegate.m in Sources */,
 				F2BDFCE51703B288007CB02F /* GuessingCatViewController.m in Sources */,
+				F2204742170BBB19003EADF7 /* Play.m in Sources */,
+				F2C8862B170DEC5800E7D625 /* Pick.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

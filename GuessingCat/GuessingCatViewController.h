@@ -1,24 +1,23 @@
 //
 //  GuessingCatViewController.h
-//  GuessingCat
 //
 //  Created by JerryTaylorKendrick on 3/27/13.
 //  Copyright (c) 2013 Jerry Taylor Kendrick. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "Play.h"
 
-@interface GuessingCatViewController : UIViewController
-
+@interface GuessingCatViewController : UIViewController<UIAlertViewDelegate>
 
 @property (strong,nonatomic) IBOutlet UILabel* gameTitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *kittyImageView;
 
+@property (strong,nonatomic) IBOutletCollection(UIButton) NSArray *gameButtons;
+@property (strong,nonatomic) IBOutletCollection(UIImageView) NSArray *kittyImageArray;
+@property (strong,nonatomic) IBOutlet UIImageView *kittyImage;
 
--(IBAction) playAgainButton:(id) sender;
-
--(IBAction) anyButtonClicked:(id) sender;
-
+// Number of wins per game
+@property (nonatomic) NSInteger numberOfWins;
 
 
 @end
