@@ -10,7 +10,6 @@
 
 @interface GuessingCatViewController : UIViewController<UIAlertViewDelegate>
 
-@property (strong,nonatomic) IBOutlet UILabel* gameTitleLabel;
 
 @property (strong,nonatomic) IBOutletCollection(UIButton) NSArray *gameButtons;
 @property (strong,nonatomic) IBOutletCollection(UIImageView) NSArray *kittyImageArray;
@@ -19,5 +18,9 @@
 // Number of wins per game
 @property (nonatomic) NSInteger numberOfWins;
 
+
+// Added to get highest score in play
+- (IBAction)anyButtonClicked:(UIButton *)sender;
+- (IBAction)didRequestRanksButton:(id)sender;
 
 @end

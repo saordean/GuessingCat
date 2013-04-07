@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GuessingCatViewController.h"
+
+@class GuessingCatViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) GuessingCatViewController *mainView;
+@property (strong, nonatomic) UINavigationController *navController;
 
 @end
 

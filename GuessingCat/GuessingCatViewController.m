@@ -7,6 +7,7 @@
 //
 
 #import "GuessingCatViewController.h"
+#import "RankViewController.h"
 #import "Pick.h"
 
 
@@ -19,10 +20,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.play = [[Play alloc] initWithMaxPicks:[self.gameButtons count]];
+    self.play = [[Play alloc] init];
     self.play.NumberOfWins = [[NSUserDefaults standardUserDefaults] integerForKey:@"wins"];
+    self.play.maxPicks = 9;
     self.play.maxAttempts = 4;
     self.play.maxWins = 3;
+    [self.play startPlay];
+    self.title = @"Guessing Cat Game";
 }
 
 
@@ -48,6 +52,7 @@
     Pick *pick = [self.play pickAtIndex:[self.gameButtons indexOfObject:sender]];
    [self.play attempt:pick];
     if(self.play.isWinner){
+        [self storeRank];
         [self displayVictoryMessage];
     }else{
         if (!self.play.canPlayAgain) {
@@ -77,11 +82,6 @@
 }
 
 
--(IBAction) playAgainButton:(id) sender
-{
-}
-
-
 -(void)showAlertWithMessage:(NSString *)message title:(NSString *)title button:(NSString *)button
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:button otherButtonTitles:nil, nil];
@@ -92,6 +92,22 @@
 {
     [self.play resetPlay];
     [self updateUserInterface];
+}
+
+
+-(void)storeRank
+{
+    NSMutableArray *ranks = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"ranks"] mutableCopy];
+    if(!ranks) ranks = [[NSMutableArray alloc] init];
+    [ranks addObject:[NSNumber numberWithDouble:self.play.span]];
+    [[NSUserDefaults standardUserDefaults] setValue:ranks forKey:@"ranks"];
+}
+
+
+- (IBAction)didRequestRanksButton:(id)sender {
+    RankViewController *rankViewController = [[RankViewController alloc] initWithNibName:@"RankViewController"
+                                                                                        bundle:nil];
+    [self.navigationController pushViewController:rankViewController animated:YES];
 }
 
 

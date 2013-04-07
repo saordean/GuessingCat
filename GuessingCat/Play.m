@@ -8,8 +8,14 @@
 
 #import "Play.h"
 
+#define DEFAULT_MAX_PICKS 9
+
 @interface Play()
-@property (nonatomic, readwrite) NSInteger answer;
+@property (nonatomic) NSInteger answer;
+@property (nonatomic) NSInteger attempts;
+@property (nonatomic, strong) NSDate *beginTime;
+@property (nonatomic, strong) NSMutableArray *picks;
+
 -(void)initializePickWithAnswer:(NSInteger)answer;
 @end
 
@@ -26,7 +32,7 @@
     self = [super init];
     if (self) {
         self.canPlayAgain = YES;
-        self.maxPicks = maxPicks;
+        self.maxPicks = maxPicks;;
         self.answer = [self randomInRangeLo:1 toHi: 9];
     }
     return self;
@@ -35,6 +41,7 @@
 
 -(void)initializePickWithAnswer:(NSInteger)answer{
     [self.picks removeAllObjects];
+    
     NSLog(@"%d", answer);
     for (int i = 1; i <= self.maxPicks; i++) {
         Pick *pick = [[Pick alloc] init];
@@ -72,6 +79,15 @@
             pick.isEnabled = NO;
         }
     }
+}
+
+
+-(void) startPlay
+{
+    self.canPlayAgain = YES;
+    self.maxPicks = DEFAULT_MAX_PICKS;
+    self.answer = [self randomInRangeLo:1 toHi:9];
+    self.beginTime = [NSDate date];
 }
 
 

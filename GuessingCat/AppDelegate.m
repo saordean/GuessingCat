@@ -8,11 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import "GuessingCatViewController.h"
 
 @implementation AppDelegate
-
-@synthesize mainView;
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -21,12 +19,11 @@
     // Override point for customization after application launch.
     
     // init the view controller
-    mainView = [[GuessingCatViewController alloc] init];
+    UIViewController *rootView = [[GuessingCatViewController alloc] initWithNibName:@"GuessingCatViewController" bundle:nil];
+    self.navController = [[UINavigationController alloc] initWithRootViewController:rootView];
     
     // set as root view
-    self.window.rootViewController = mainView;
-    
-       
+    [[self window] setRootViewController:self.navController];
     [self.window makeKeyAndVisible];
     return YES;
 }

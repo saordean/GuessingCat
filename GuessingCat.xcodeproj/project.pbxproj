@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		F2204742170BBB19003EADF7 /* Play.m in Sources */ = {isa = PBXBuildFile; fileRef = F2204740170BBB19003EADF7 /* Play.m */; };
+		F2218B7A1711C6790006CA30 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2218B791711C6790006CA30 /* Default@2x.png */; };
+		F2218B7C1711C6850006CA30 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2218B7B1711C6850006CA30 /* Default-568h@2x.png */; };
+		F2218B861711D1ED0006CA30 /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2218B841711D1ED0006CA30 /* RankViewController.m */; };
+		F2218B871711D1ED0006CA30 /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2218B851711D1ED0006CA30 /* RankViewController.xib */; };
 		F2BDFCC51703B218007CB02F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDFCC41703B218007CB02F /* UIKit.framework */; };
 		F2BDFCC71703B218007CB02F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDFCC61703B218007CB02F /* Foundation.framework */; };
 		F2BDFCC91703B218007CB02F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDFCC81703B218007CB02F /* CoreGraphics.framework */; };
 		F2BDFCCF1703B218007CB02F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCCD1703B218007CB02F /* InfoPlist.strings */; };
 		F2BDFCD11703B218007CB02F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDFCD01703B218007CB02F /* main.m */; };
 		F2BDFCD51703B218007CB02F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDFCD41703B218007CB02F /* AppDelegate.m */; };
-		F2BDFCD91703B218007CB02F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCD81703B218007CB02F /* Default@2x.png */; };
-		F2BDFCDB1703B218007CB02F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */; };
 		F2BDFCE51703B288007CB02F /* GuessingCatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BDFCE31703B288007CB02F /* GuessingCatViewController.m */; };
 		F2BDFCE61703B288007CB02F /* GuessingCatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2BDFCE41703B288007CB02F /* GuessingCatViewController.xib */; };
 		F2BF4B4E17050E10000B12B2 /* twoCats.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BF4B4D17050E10000B12B2 /* twoCats.png */; };
@@ -30,6 +32,11 @@
 /* Begin PBXFileReference section */
 		F220473F170BBB19003EADF7 /* Play.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play.h; sourceTree = "<group>"; };
 		F2204740170BBB19003EADF7 /* Play.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Play.m; sourceTree = "<group>"; };
+		F2218B791711C6790006CA30 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = SOURCE_ROOT; };
+		F2218B7B1711C6850006CA30 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		F2218B831711D1ED0006CA30 /* RankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
+		F2218B841711D1ED0006CA30 /* RankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
+		F2218B851711D1ED0006CA30 /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
 		F2BDFCC11703B218007CB02F /* GuessingCat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessingCat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BDFCC41703B218007CB02F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2BDFCC61703B218007CB02F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -40,8 +47,6 @@
 		F2BDFCD21703B218007CB02F /* GuessingCat-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GuessingCat-Prefix.pch"; sourceTree = "<group>"; };
 		F2BDFCD31703B218007CB02F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2BDFCD41703B218007CB02F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F2BDFCD81703B218007CB02F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F2BDFCE21703B288007CB02F /* GuessingCatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessingCatViewController.h; sourceTree = "<group>"; };
 		F2BDFCE31703B288007CB02F /* GuessingCatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessingCatViewController.m; sourceTree = "<group>"; };
 		F2BDFCE41703B288007CB02F /* GuessingCatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuessingCatViewController.xib; sourceTree = "<group>"; };
@@ -117,6 +122,9 @@
 				F2BDFCE21703B288007CB02F /* GuessingCatViewController.h */,
 				F2BDFCE31703B288007CB02F /* GuessingCatViewController.m */,
 				F2BDFCE41703B288007CB02F /* GuessingCatViewController.xib */,
+				F2218B831711D1ED0006CA30 /* RankViewController.h */,
+				F2218B841711D1ED0006CA30 /* RankViewController.m */,
+				F2218B851711D1ED0006CA30 /* RankViewController.xib */,
 			);
 			path = GuessingCat;
 			sourceTree = "<group>";
@@ -124,6 +132,8 @@
 		F2BDFCCB1703B218007CB02F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2218B7B1711C6850006CA30 /* Default-568h@2x.png */,
+				F2218B791711C6790006CA30 /* Default@2x.png */,
 				F2BF4B5117050F9E000B12B2 /* threeCats.png */,
 				F2BF4B4F17050E1A000B12B2 /* oneCat.png */,
 				F2BF4B4D17050E10000B12B2 /* twoCats.png */,
@@ -134,8 +144,6 @@
 				F2BDFCCD1703B218007CB02F /* InfoPlist.strings */,
 				F2BDFCD01703B218007CB02F /* main.m */,
 				F2BDFCD21703B218007CB02F /* GuessingCat-Prefix.pch */,
-				F2BDFCD81703B218007CB02F /* Default@2x.png */,
-				F2BDFCDA1703B218007CB02F /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -192,8 +200,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2BDFCCF1703B218007CB02F /* InfoPlist.strings in Resources */,
-				F2BDFCD91703B218007CB02F /* Default@2x.png in Resources */,
-				F2BDFCDB1703B218007CB02F /* Default-568h@2x.png in Resources */,
 				F2BDFCE61703B288007CB02F /* GuessingCatViewController.xib in Resources */,
 				F2E946981704C45C008D0ED7 /* Mocha.png in Resources */,
 				F2E9469C1704D0C7008D0ED7 /* fiveButton.png in Resources */,
@@ -201,6 +207,9 @@
 				F2BF4B5017050E1A000B12B2 /* oneCat.png in Resources */,
 				F2BF4B5217050F9E000B12B2 /* threeCats.png in Resources */,
 				F2BF4B5317051090000B12B2 /* Default.png in Resources */,
+				F2218B7A1711C6790006CA30 /* Default@2x.png in Resources */,
+				F2218B7C1711C6850006CA30 /* Default-568h@2x.png in Resources */,
+				F2218B871711D1ED0006CA30 /* RankViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +225,7 @@
 				F2BDFCE51703B288007CB02F /* GuessingCatViewController.m in Sources */,
 				F2204742170BBB19003EADF7 /* Play.m in Sources */,
 				F2C8862B170DEC5800E7D625 /* Pick.m in Sources */,
+				F2218B861711D1ED0006CA30 /* RankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

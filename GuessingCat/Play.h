@@ -22,6 +22,8 @@
 @property NSInteger numberOfWins;
 // The number of losses per game
 @property NSInteger numberOfLosses;
+// Time of play
+@property (nonatomic) NSTimeInterval span;
 // Maximum number of wins
 @property (nonatomic) NSInteger maxWins;
 // Maximum number of Attempts
@@ -34,7 +36,7 @@
 // Array of button values
 @property (nonatomic, strong) NSMutableArray *buttonArray;
 // Array of picked values
-@property (nonatomic, strong) NSMutableArray *picks;
+//@property (nonatomic, strong) NSMutableArray *picks;
 
 // Boolean indicator of whether the game can be played again
 @property (nonatomic) BOOL canPlayAgain;
@@ -42,10 +44,11 @@
 @property (nonatomic) BOOL isWinner;
 // --------------- Application wide properties---------------------------------
 
--(void)initializePickWithAnswer:(NSInteger)answer;
--(id)initWithMaxPicks:(NSInteger)maxPicks;
--(Pick *) pickAtIndex:(NSUInteger)index;
--(void) attempt: (Pick *) pick;
+-(void)startPlay;
 -(void)resetPlay;
+-(void)attempt: (Pick *) pick;
+-(void)initializePickWithAnswer:(NSInteger) answer;
+-(id)initWithMaxPicks:(NSInteger) maxPicks;
+-(Pick *) pickAtIndex:(NSUInteger) index;
 
 @end
