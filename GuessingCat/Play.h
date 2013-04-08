@@ -28,7 +28,7 @@
 @property (nonatomic) NSInteger maxWins;
 // Maximum number of Attempts
 @property (nonatomic) NSInteger maxAttempts;
-// Maximum number of Picks
+// Array of picked values
 @property (nonatomic) NSInteger maxPicks;
 // Index of the Picks array
 @property (nonatomic) NSInteger pickAtIndex;
@@ -47,7 +47,7 @@
 -(void)startPlay;
 -(void)resetPlay;
 -(void)attempt: (Pick *) pick;
--(void)initializePickWithAnswer:(NSInteger) answer;
+-(void)initializePickWithCorrectValue:(NSInteger) correctPick;
 -(id)initWithMaxPicks:(NSInteger) maxPicks;
 -(Pick *) pickAtIndex:(NSUInteger) index;
 

@@ -8,7 +8,7 @@
 
 #import "GuessingCatViewController.h"
 #import "RankViewController.h"
-#import "Pick.h"
+//#import "Pick.h"
 
 
 @interface GuessingCatViewController()
@@ -21,8 +21,8 @@
 {
     [super viewDidLoad];
     self.play = [[Play alloc] init];
-    self.play.NumberOfWins = [[NSUserDefaults standardUserDefaults] integerForKey:@"wins"];
     self.play.maxPicks = 9;
+    self.play.NumberOfWins = [[NSUserDefaults standardUserDefaults] integerForKey:@"wins"];
     self.play.maxAttempts = 4;
     self.play.maxWins = 3;
     [self.play startPlay];
@@ -69,16 +69,6 @@
     }else{
         [self showAlertWithMessage:@"You are now done." title:@"Guessing Cat Victor!" button:@"OK"];
     }
-}
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 

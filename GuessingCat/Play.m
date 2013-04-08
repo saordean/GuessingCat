@@ -11,12 +11,12 @@
 #define DEFAULT_MAX_PICKS 9
 
 @interface Play()
-@property (nonatomic) NSInteger answer;
+@property (nonatomic) NSInteger correctPick;
 @property (nonatomic) NSInteger attempts;
 @property (nonatomic, strong) NSDate *beginTime;
 @property (nonatomic, strong) NSMutableArray *picks;
 
--(void)initializePickWithAnswer:(NSInteger)answer;
+-(void)initializePickWithCorrectValue:(NSInteger)correctPick;
 @end
 
 @implementation Play
@@ -33,30 +33,30 @@
     if (self) {
         self.canPlayAgain = YES;
         self.maxPicks = maxPicks;;
-        self.answer = [self randomInRangeLo:1 toHi: 9];
+        self.correctPick = [self randomInRangeLo:1 toHi: 9];
     }
     return self;
 }
 
 
--(void)initializePickWithAnswer:(NSInteger)answer{
+-(void)initializePickWithCorrectValue:(NSInteger)correctPick{
     [self.picks removeAllObjects];
     
-    NSLog(@"%d", answer);
+    NSLog(@"%d", correctPick);
     for (int i = 1; i <= self.maxPicks; i++) {
         Pick *pick = [[Pick alloc] init];
         pick.value = i;
         pick.isEnabled = YES;
-        pick.isAnswer = i == answer;
+        pick.isCorrect = i == correctPick;
         [self.picks addObject:pick];
     }
 }
 
 
--(void)setAnswer:(NSInteger)answer
+-(void)setCorrectPick:(NSInteger)correctPick
 {
-    _answer = answer;
-    [self initializePickWithAnswer:answer];
+    _correctPick = correctPick;
+    [self initializePickWithCorrectValue:correctPick];
 }
 
 
@@ -67,7 +67,7 @@
 
 -(void)attempt:(Pick *)pick {
     self.numberOfAttempts++;
-    if(pick.isAnswer){
+    if(pick.isCorrect){
         self.numberOfWins++;
         self.isWinner = YES;
     
@@ -86,7 +86,7 @@
 {
     self.canPlayAgain = YES;
     self.maxPicks = DEFAULT_MAX_PICKS;
-    self.answer = [self randomInRangeLo:1 toHi:9];
+    self.correctPick = [self randomInRangeLo:1 toHi:9];
     self.beginTime = [NSDate date];
 }
 
@@ -95,7 +95,7 @@
     if(self.numberOfWins < self.maxWins){
         self.numberOfAttempts = 0;
         self.isWinner = NO;
-        [self initializePickWithAnswer:[self randomInRangeLo: 1 toHi:9]];
+        [self initializePickWithCorrectValue:[self randomInRangeLo: 1 toHi:9]];
     }
     else{
         [self.picks setValue:[NSNumber numberWithBool:NO] forKey:@"isEnabled"];

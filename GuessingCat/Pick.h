@@ -11,7 +11,7 @@
 @interface Pick : NSObject
 
 @property (nonatomic) NSInteger value;
-@property (nonatomic) BOOL isAnswer;
+@property (nonatomic) BOOL isCorrect;
 @property (nonatomic) BOOL isEnabled;
 
 @end
