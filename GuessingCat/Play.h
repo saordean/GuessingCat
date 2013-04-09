@@ -14,27 +14,23 @@
 @interface Play : NSObject
 
 // ---------------- Application wide properties ----------------------------------
-// Create a frame timer to determine how long the game end image is displayed
-@property (nonatomic) NSTimer *frameTimer;
 // The number of attempts per play (restricted to 4)
-@property NSInteger numberOfAttempts;
-// The number of wins per game
-@property NSInteger numberOfWins;
-// The number of losses per game
-@property NSInteger numberOfLosses;
-// Time of play
+@property (nonatomic) NSInteger numberOfAttempts;
+// The number of wins per game (<= 3)
+@property (nonatomic) NSInteger numberOfWins;
+// Span of time a play lasts
 @property (nonatomic) NSTimeInterval span;
 // Maximum number of wins
 @property (nonatomic) NSInteger maxWins;
 // Maximum number of Attempts
 @property (nonatomic) NSInteger maxAttempts;
-// Array of picked values
+// Maximum number of values that can be picked
 @property (nonatomic) NSInteger maxPicks;
 // Index of the Picks array
 @property (nonatomic) NSInteger pickAtIndex;
 
 // Array of button values
-@property (nonatomic, strong) NSMutableArray *buttonArray;
+//@property (nonatomic, strong) NSMutableArray *buttonArray;
 // Array of picked values
 //@property (nonatomic, strong) NSMutableArray *picks;
 
@@ -47,8 +43,7 @@
 -(void)startPlay;
 -(void)resetPlay;
 -(void)attempt: (Pick *) pick;
--(void)initializePickWithCorrectValue:(NSInteger) correctPick;
--(id)initWithMaxPicks:(NSInteger) maxPicks;
 -(Pick *) pickAtIndex:(NSUInteger) index;
+//-(void)initializePickWithCorrectValue:(NSInteger) correctPick;
 
 @end

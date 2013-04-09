@@ -12,16 +12,18 @@
 @property (nonatomic, strong) NSArray *ranks;
 @end
 
-
 @implementation RankViewController
+
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"Top Ranks";
     self.ranks = [[NSUserDefaults standardUserDefaults] arrayForKey:@"Ranks"];
     [self.tableView reloadData];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -30,13 +32,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if(!cell){
+    // if (!cell) {
+    if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
+//    self.tableView.delegate = self;
+//    self.tableView.dataSource = self;
     
     id time = self.ranks[indexPath.row];
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@",time];
+
     return cell;
 }
 

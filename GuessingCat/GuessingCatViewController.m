@@ -8,18 +8,50 @@
 
 #import "GuessingCatViewController.h"
 #import "RankViewController.h"
-//#import "Pick.h"
+#import "Pick.h"
 
 
 @interface GuessingCatViewController()
 @property (nonatomic, strong) Play *play;
+//@property (strong,nonatomic) UISwipeGestureRecognizer *oneFingerSwipeGestureDown;
+
+@property (strong,nonatomic) NSString *tmp;
 @end
 
 @implementation GuessingCatViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    // add swipe gestures
+//    self.oneFingerSwipeGestureDown = [[UISwipeGestureRecognizer alloc]
+//                               initWithTarget:self
+//                               action:@selector(oneFingerSwipeDownSelector:)];
+//    [_oneFingerSwipeGestureDown setDirection:UISwipeGestureRecognizerDirectionDown];
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // The following code is added to allow swipe recognition int the Guessingcat View Controller:
+    //    - Right Swipe for next view (Score Ranks)
+    //    - Left Swipe for previous view (Guessing Cat view if in Ranks View)
+    //    - Up Swipe - no action
+    //    - Down Swipt - no action
+    
+    self.swipeRanksLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleRanksSwipes:)];
+    self.swipeRanksLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    // I think the line below accomplishes the same as above (?)
+    //[_swipeRanksLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.view addGestureRecognizer:self.swipeRanksLeft];
+    
+    self.swipeRanksRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleRanksSwipes:)];
+    self.swipeRanksRight.direction = UISwipeGestureRecognizerDirectionRight;
+    // I think the line below accomplishes the same as above (?)
+    //[_swipeRanksRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:self.swipeRanksRight];
+    
     self.play = [[Play alloc] init];
     self.play.maxPicks = 9;
     self.play.NumberOfWins = [[NSUserDefaults standardUserDefaults] integerForKey:@"wins"];
@@ -34,7 +66,7 @@
 {
     for (UIButton *gameButton in self.gameButtons) {
         Pick *pick = [self.play pickAtIndex:[self.gameButtons indexOfObject:gameButton]];
-        gameButton.titleLabel.text = [NSString stringWithFormat:@"%d", pick.value];
+        //gameButton.titleLabel.text = [NSString stringWithFormat:@"%d", pick.value];
         [gameButton setHidden:!pick.isEnabled];
     }
     for (UIImageView *kittyView in self.kittyImageArray) {
@@ -95,12 +127,37 @@
 
 
 - (IBAction)didRequestRanksButton:(id)sender {
-    RankViewController *rankViewController = [[RankViewController alloc] initWithNibName:@"RankViewController"
-                                                                                        bundle:nil];
+    RankViewController *rankViewController = [[RankViewController alloc]   initWithNibName:@"RankViewController"
+        bundle:nil];
     [self.navigationController pushViewController:rankViewController animated:YES];
 }
 
 
+- (IBAction) handleRanksSwipes:(UIGestureRecognizer *) sender {
+    UISwipeGestureRecognizerDirection direction = [(UISwipeGestureRecognizer *) sender direction];
+    
+    switch (direction) {
+        case UISwipeGestureRecognizerDirectionUp:
+            NSLog(@"up");
+            break;
+        case UISwipeGestureRecognizerDirectionDown:
+            NSLog(@"down");
+            break;
+        case UISwipeGestureRecognizerDirectionLeft:
+            NSLog(@"left");
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+        case UISwipeGestureRecognizerDirectionRight:
+            NSLog(@"right");
+               RankViewController *rankViewController = [[RankViewController alloc]  initWithNibName:@"RankViewController"
+                                                                                            bundle:nil];
+            [self.navigationController pushViewController:rankViewController animated:YES];
+            break;
+    }
+}
+
+
+                                                       
 - (void)didReceiveMemoryWarning
 {
 

@@ -11,7 +11,7 @@
 #define DEFAULT_MAX_PICKS 9
 
 @interface Play()
-@property (nonatomic) NSInteger correctPick;
+@property (nonatomic) NSInteger correctValue;
 @property (nonatomic) NSInteger attempts;
 @property (nonatomic, strong) NSDate *beginTime;
 @property (nonatomic, strong) NSMutableArray *picks;
@@ -27,36 +27,23 @@
 }
 
 
-- (id)initWithMaxPicks:(NSInteger)maxPicks
-{
-    self = [super init];
-    if (self) {
-        self.canPlayAgain = YES;
-        self.maxPicks = maxPicks;;
-        self.correctPick = [self randomInRangeLo:1 toHi: 9];
-    }
-    return self;
-}
-
-
--(void)initializePickWithCorrectValue:(NSInteger)correctPick{
+-(void)initializePickWithCorrectValue:(NSInteger)correctValue{
     [self.picks removeAllObjects];
-    
-    NSLog(@"%d", correctPick);
+
     for (int i = 1; i <= self.maxPicks; i++) {
         Pick *pick = [[Pick alloc] init];
         pick.value = i;
         pick.isEnabled = YES;
-        pick.isCorrect = i == correctPick;
+        pick.isCorrect = i == correctValue;
         [self.picks addObject:pick];
     }
 }
 
 
--(void)setCorrectPick:(NSInteger)correctPick
+-(void)setCorrectValue:(NSInteger)correctValue
 {
-    _correctPick = correctPick;
-    [self initializePickWithCorrectValue:correctPick];
+    _correctValue = correctValue;
+    [self initializePickWithCorrectValue:correctValue];
 }
 
 
@@ -70,7 +57,7 @@
     if(pick.isCorrect){
         self.numberOfWins++;
         self.isWinner = YES;
-    
+        self.span = [self.beginTime timeIntervalSinceDate:[NSDate date]];
     }else{
         self.canPlayAgain = self.numberOfAttempts < self.maxAttempts;
         if(!self.canPlayAgain){
@@ -86,7 +73,7 @@
 {
     self.canPlayAgain = YES;
     self.maxPicks = DEFAULT_MAX_PICKS;
-    self.correctPick = [self randomInRangeLo:1 toHi:9];
+    self.correctValue = [self randomInRangeLo:1 toHi:9];
     self.beginTime = [NSDate date];
 }
 

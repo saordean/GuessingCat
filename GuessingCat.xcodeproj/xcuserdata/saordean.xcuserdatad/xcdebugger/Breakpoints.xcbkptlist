@@ -4,7 +4,7 @@
    version = "1.0">
    <SymbolicBreakpoints>
       <AddressBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          symbolName = "*0x981e6a7b">
