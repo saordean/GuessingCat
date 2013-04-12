@@ -63,6 +63,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F220473D170BB78F003EADF7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F2BDFCB81703B217007CB02F = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +100,7 @@
 		F2BDFCCA1703B218007CB02F /* GuessingCat */ = {
 			isa = PBXGroup;
 			children = (
+				F220473D170BB78F003EADF7 /* Model */,
 				F2BDFCD31703B218007CB02F /* AppDelegate.h */,
 				F2BDFCD41703B218007CB02F /* AppDelegate.m */,
 				F2BDFCCB1703B218007CB02F /* Supporting Files */,
